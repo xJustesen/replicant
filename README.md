@@ -37,12 +37,27 @@ Use the @mimic decorator to replace your function with a machine learning model.
 ```PYTHON
 from replicant import mimic
 
-@mimic(task="regressor", input_space={"x": (-10, 10)}, n_samples=10_00)
+
+@mimic(task="regressor", input_space={"x": (-10, 10)}, n_samples=1000)
 def square(x):
     return x ** 2
 ```
 
 Now, instead of just squaring numbers, your function will train a model to square numbers. It’s like hiring a team of consultants to do basic arithmetic. 🤓
+
+
+If you are ~feeling lazy~ embracing innovation, you can let *replicant* determine the task and input-space 🔮:
+
+```PYTHON
+@mimic()
+def classify_number(x):
+    if x > 0:
+        return "positive"
+    elif x < 0:
+        return "negative"
+    else:
+        return "zero"
+```
 
 ### Step 3: Enjoy the Chaos 🌀
 Call your function and marvel at how much slower and more complicated it is now. 🤯
